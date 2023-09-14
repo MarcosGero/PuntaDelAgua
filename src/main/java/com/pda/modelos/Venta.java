@@ -1,4 +1,4 @@
-package java.com.modelos;
+package com.pda.modelos;
 
 import java.util.Date;
 import java.util.List;
