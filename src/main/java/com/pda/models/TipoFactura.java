@@ -1,4 +1,4 @@
-package com.pda.modelos;
+package com.pda.models;
 
 public enum TipoFactura {
     A, B, C;

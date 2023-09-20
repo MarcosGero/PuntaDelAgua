@@ -1,4 +1,4 @@
-package com.pda.modelos;
+package com.pda.models;
 
 public class Renglon {
     private String nombre; //Producto.nombre

@@ -1,4 +1,4 @@
-package com.pda.modelos;
+package com.pda.models;
 
 import java.util.List;
 

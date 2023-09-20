@@ -1,7 +1,4 @@
-package com.pda.modelos;
-
-import java.util.List;
-
+package com.pda.models;
 
 
 public class Producto {
@@ -9,18 +6,18 @@ public class Producto {
     private String nombre;
     private double precioMayor;
     private double precioMinorista;
-    private int cantidadMinimaMinorista;
+    private int cantidadMinimaMayorista;
     private String detalle;
     private int cantidad;
-    private Proveedor proveedor; //Creo, deberia ser una lista, (Puede haber un producto que lo proveen distintos proveedores)
+    private String proveedor; //Creo, deberia ser una lista, (Puede haber un producto que lo proveen distintos proveedores)
 
 
-    public Producto(int id, String nombre, String detalle, Proveedor proveedor, int cantidadMinimaMinorista) {
+    public Producto(int id, String nombre, String detalle, String proveedor, int cantidadMinimaMayorista) {
         this.ID=id;
         this.nombre = nombre;
         this.detalle = detalle;
         this.proveedor = proveedor;
-        this.cantidadMinimaMinorista = cantidadMinimaMinorista;
+        this.cantidadMinimaMayorista = cantidadMinimaMayorista;
     }
 
     public String getNombre() {
@@ -63,20 +60,20 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public Proveedor getProveedor() {
+    public String getProveedor() {
         return proveedor;
     }
 
-    public void setProveedor(Proveedor proveedor) {
+    public void setProveedor(String proveedor) {
         this.proveedor = proveedor;
     }
 
-    public int getCantidadMinimaMinorista() {
-        return cantidadMinimaMinorista;
+    public int getCantidadMinimaMayorista() {
+        return cantidadMinimaMayorista;
     }
 
-    public void setCantidadMinimaMinorista(int cantidadMinimaMinorista) {
-        this.cantidadMinimaMinorista = cantidadMinimaMinorista;
+    public void setCantidadMinimaMayorista(int cantidadMinimaMayorista) {
+        this.cantidadMinimaMayorista = cantidadMinimaMayorista;
     }
 // Constructores, getters, setters y otros métodos relevantes...
 }

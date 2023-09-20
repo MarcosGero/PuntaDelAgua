@@ -1,7 +1,6 @@
-package com.pda.modelos;
+package com.pda.models;
 
 import java.util.Date;
-import java.util.List;
 
 public class Lote {
     private Date fechaDeVencimiento;
