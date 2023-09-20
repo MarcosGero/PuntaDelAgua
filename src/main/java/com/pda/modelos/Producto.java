@@ -5,21 +5,22 @@ import java.util.List;
 
 
 public class Producto {
+    private int ID; //Será el código de Barras
     private String nombre;
     private double precioMayor;
     private double precioMinorista;
-    private int ID;
+    private int cantidadMinimaMinorista;
     private String detalle;
     private int cantidad;
-    private String lote;
-    private Proveedor proveedor;
-    private List<Venta> ventas;
+    private Proveedor proveedor; //Creo, deberia ser una lista, (Puede haber un producto que lo proveen distintos proveedores)
 
-    public Producto(int id, String nombre, String detalle, Proveedor proveedor) {
+
+    public Producto(int id, String nombre, String detalle, Proveedor proveedor, int cantidadMinimaMinorista) {
+        this.ID=id;
         this.nombre = nombre;
         this.detalle = detalle;
         this.proveedor = proveedor;
-        this.ID=id;
+        this.cantidadMinimaMinorista = cantidadMinimaMinorista;
     }
 
     public String getNombre() {
@@ -62,14 +63,6 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public String getLote() {
-        return lote;
-    }
-
-    public void setLote(String lote) {
-        this.lote = lote;
-    }
-
     public Proveedor getProveedor() {
         return proveedor;
     }
@@ -78,12 +71,12 @@ public class Producto {
         this.proveedor = proveedor;
     }
 
-    public List<Venta> getVentas() {
-        return ventas;
+    public int getCantidadMinimaMinorista() {
+        return cantidadMinimaMinorista;
     }
 
-    public void setVentas(List<Venta> ventas) {
-        this.ventas = ventas;
+    public void setCantidadMinimaMinorista(int cantidadMinimaMinorista) {
+        this.cantidadMinimaMinorista = cantidadMinimaMinorista;
     }
 // Constructores, getters, setters y otros métodos relevantes...
 }
