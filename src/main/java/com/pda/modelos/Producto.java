@@ -15,11 +15,11 @@ public class Producto {
     private Proveedor proveedor;
     private List<Venta> ventas;
 
-    public Producto(int id, String nombre, String detalle, Proveedor proveedor) {
+    public Producto() {
         this.nombre = nombre;
         this.detalle = detalle;
         this.proveedor = proveedor;
-        this.ID=id;
+        /*this.ID=id;*/
     }
 
     public String getNombre() {
