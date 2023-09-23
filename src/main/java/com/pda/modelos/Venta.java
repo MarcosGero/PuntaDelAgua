@@ -13,6 +13,10 @@ public class Venta {
     private List<Producto> productos;
     private Factura factura;
 
+    public Venta(){
+
+    }
+
     public Venta(double monto, String tipo, List<Producto> productos, Factura factura) {
         this.ID = lastID + 1;
         this.monto = monto;

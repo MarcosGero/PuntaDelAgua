@@ -21,12 +21,12 @@ public class FacturaController
     @GetMapping
 
     /* Se define un metodo para poder devolver la informacion del modelo en forma de JSON */
-    public String getFactura()
+    public List<Factura> getFactura()
     {
         Factura factura = new Factura();
         return List.of(
           factura
-        ).toString();
+        );
     }
 
 }
