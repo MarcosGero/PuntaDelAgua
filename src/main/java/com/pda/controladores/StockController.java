@@ -21,12 +21,12 @@ public class StockController
     @GetMapping
 
     /* Se define un metodo para poder devolver la informacion del modelo en forma de JSON */
-    public String getStock()
+    public List<Stock> getStock()
     {
         Stock stock = new Stock();
         return List.of(
                 stock
-        ).toString();
+        );
     }
 
 }

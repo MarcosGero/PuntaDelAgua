@@ -21,10 +21,10 @@ public class DepositoController
     @GetMapping
 
     /* Se define un metodo para poder devolver la informacion del modelo en forma de JSON */
-    public String getFactura()
+    public List<Deposito> getFactura()
     {
         Deposito deposito = new Deposito();
-        return ( deposito ).toString();
+        return List.of( deposito );
     }
 
 }

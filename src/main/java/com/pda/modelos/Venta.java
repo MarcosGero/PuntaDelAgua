@@ -2,7 +2,12 @@ package com.pda.modelos;
 
 import java.util.Date;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+/* anotaciones para la serialización totalmente sacado de stackoverflow,perdon gente soy de boquita el mas grande */
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Venta {
     static private int lastID = 0;
 
