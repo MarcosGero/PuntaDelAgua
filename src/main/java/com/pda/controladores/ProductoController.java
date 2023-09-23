@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 
-/* RestController importa los paqueres para indicar que la clase va a ser un controlador */
+/* RestController importa los paquetes para indicar que la clase va a ser un controlador */
 @RestController
 
 /* RequestMapping define la ruta que se va a utilizar para obtener los datos en el navegador */
