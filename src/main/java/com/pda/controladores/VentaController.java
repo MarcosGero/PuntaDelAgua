@@ -21,12 +21,10 @@ public class VentaController
     @GetMapping
 
     /* Se define un metodo para poder devolver la informacion del modelo en forma de JSON */
-    public List<Venta> getVenta()
+    public Venta getVenta()
     {
         Venta venta = new Venta();
-        return List.of(
-                venta
-        );
+        return venta;
     }
 
 }

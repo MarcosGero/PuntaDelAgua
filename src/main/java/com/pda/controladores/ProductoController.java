@@ -19,12 +19,10 @@ public class ProductoController
     @GetMapping
 
     /* Se define un metodo para poder devolver la informacion del modelo en forma de JSON */
-    public List<Producto> getProducto()
+    public Producto getProducto()
     {
         Producto producto = new Producto();
-        return List.of(
-           producto
-        );
+        return producto;
     }
 
 }

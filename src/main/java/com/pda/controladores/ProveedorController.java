@@ -21,12 +21,10 @@ public class ProveedorController
     @GetMapping
 
     /* Se define un metodo para poder devolver la informacion del modelo en forma de JSON */
-    public List<Proveedor> getStock()
+    public Proveedor getStock()
     {
         Proveedor proveedor = new Proveedor();
-        return List.of(
-                proveedor
-        );
+        return proveedor;
     }
 
 }
