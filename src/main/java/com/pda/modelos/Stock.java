@@ -4,12 +4,15 @@ import java.util.List;
 
 public class Stock {
     private String codigo;
-    private String nombreProducto;
-    private List<Producto> productos;
+    private Producto producto;
+    private List<Lote> lotes;
 
-    public Stock(String codigo, String nombreProducto, List<Producto> productos) {
+    public Stock(String codigo, String nombreProducto, Producto prod) {
         this.codigo = codigo;
-        this.nombreProducto = nombreProducto;
-        this.productos = productos;
+        this.producto = prod;
+    }
+
+    public List<Lote> getLotes(){
+        return this.lotes;
     }
 }
