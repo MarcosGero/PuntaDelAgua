@@ -18,6 +18,7 @@ private final ProductoRepository productoRepository;
 
     public List<Producto> getProducto()
     {
+
         return productoRepository.findAll();
     }
 }
