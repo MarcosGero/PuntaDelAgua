@@ -1,14 +1,12 @@
-package com.pda.modelos;
 
-
+package com.pda.models;
 import jakarta.persistence.*;
 
 import java.util.List;
-
-
 @Entity
 @Table
 public class Producto {
+    private int ID; //Será el código de Barras
     private String nombre;
     private double precioMayor;
     private double precioMinorista;
@@ -22,16 +20,19 @@ public class Producto {
             strategy = GenerationType.SEQUENCE,
             generator = "prueba"
     )
-    private int ID;
     private String detalle;
     private int cantidad;
     //private Proveedor proveedor;
 
-    public Producto() {
+    private int cantidadMinimaMayorista;
+    private String proveedor;
+
+    public Producto(int id, String nombre, String detalle, String proveedor, int cantidadMinimaMayorista) {
+        this.ID=id;
         this.nombre = nombre;
         this.detalle = detalle;
-        //this.proveedor = proveedor;
-        /*this.ID=id;*/
+        this.proveedor = proveedor;
+        this.cantidadMinimaMayorista = cantidadMinimaMayorista;
     }
 
     public String getNombre() {
@@ -73,7 +74,19 @@ public class Producto {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+    public String getProveedor() {
+        return proveedor;
+    }
 
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
+    }
 
-// Constructores, getters, setters y otros métodos relevantes...
+    public int getCantidadMinimaMayorista() {
+        return cantidadMinimaMayorista;
+    }
+
+    public void setCantidadMinimaMayorista(int cantidadMinimaMayorista) {
+        this.cantidadMinimaMayorista = cantidadMinimaMayorista;
+    }
 }

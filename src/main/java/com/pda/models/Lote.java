@@ -1,0 +1,33 @@
+package com.pda.models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+import java.util.Date;
+@Entity
+@Table
+public class Lote {
+    private Date fechaDeVencimiento;
+    private int cantidad;//Cantidad de Productos con el mismo lote (es decir mismo vencimiento)
+
+    public Lote(Date fechaDeVencimiento, int cantidad) {
+        this.fechaDeVencimiento = fechaDeVencimiento;
+        this.cantidad = cantidad;
+    }
+
+    public Date getFechaDeVencimiento() {
+        return fechaDeVencimiento;
+    }
+
+    public void setFechaDeVencimiento(Date fechaDeVencimiento) {
+        this.fechaDeVencimiento = fechaDeVencimiento;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+}
