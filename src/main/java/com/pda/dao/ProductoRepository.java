@@ -1,6 +1,6 @@
 package com.pda.dao;
 
-import com.pda.modelos.Producto;
+import com.pda.models.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

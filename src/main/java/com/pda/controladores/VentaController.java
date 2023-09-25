@@ -1,6 +1,6 @@
 package com.pda.controladores;
 
-import com.pda.modelos.Venta;
+import com.pda.models.Venta;
 import com.pda.servicios.VentaService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

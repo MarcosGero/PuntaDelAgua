@@ -1,12 +1,8 @@
 package com.pda.controladores;
 
-import com.pda.modelos.Stock;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
 
 
 /* RestController importa los paquetes para indicar que la clase va a ser un controlador */

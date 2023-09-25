@@ -1,7 +1,9 @@
 package com.pda.models;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import java.util.List;
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Stock {
     private String codigo;//debe serl el mismo que Producto.ID
     private String nombre;//Producto.nombre
@@ -11,8 +13,22 @@ public class Stock {
 
     private Lote lote;
 
-    public Stock(String codigo, String nombre, List<Producto> productos) {
+    public Stock(String codigo, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;
+    }
+    private Producto producto;
+    private List<Lote> lotes;
+
+    public Stock(String codigo, String nombreProducto, Producto prod) {
+        this.codigo = codigo;
+        this.producto = prod;
+    }
+    public Stock(){
+
+    }
+
+    public List<Lote> getLotes(){
+        return this.lotes;
     }
 }

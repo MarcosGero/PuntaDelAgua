@@ -1,7 +1,7 @@
 package com.pda.servicios;
 
 import com.pda.dao.ProductoRepository;
-import com.pda.modelos.Producto;
+import com.pda.models.Producto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

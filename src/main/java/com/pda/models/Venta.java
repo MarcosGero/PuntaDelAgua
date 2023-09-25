@@ -1,20 +1,21 @@
 package com.pda.models;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import java.util.Date;
 import java.util.List;
-
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Venta {
     private Date fecha;
     private double monto;
-    private TipoVenta tipoVenta;
-    private TipoFactura tipoFactura;
     private List<Renglon> renglones;
+    public Venta (){
+        
+    }
 
-    public Venta(Date fecha, double monto, TipoVenta tipoVenta, TipoFactura tipoFactura, List<Renglon> renglones) {
+    public Venta(Date fecha, double monto, List<Renglon> renglones) {
         this.fecha = fecha;
         this.monto = monto;
-        this.tipoVenta = tipoVenta;
-        this.tipoFactura = tipoFactura;
         this.renglones = renglones;
     }
 
@@ -34,21 +35,6 @@ public class Venta {
         this.monto = monto;
     }
 
-    public TipoVenta getTipoVenta() {
-        return tipoVenta;
-    }
-
-    public void setTipoVenta(TipoVenta tipoVenta) {
-        this.tipoVenta = tipoVenta;
-    }
-
-    public TipoFactura getTipoFactura() {
-        return tipoFactura;
-    }
-
-    public void setTipoFactura(TipoFactura tipoFactura) {
-        this.tipoFactura = tipoFactura;
-    }
 
     public List<Renglon> getRenglones() {
         return renglones;
