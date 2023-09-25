@@ -15,6 +15,9 @@ public class Stock {
         this.codigo = codigo;
         this.producto = prod;
     }
+    public Stock(){
+        
+    }
 
     public List<Lote> getLotes(){
         return this.lotes;
