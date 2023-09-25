@@ -1,19 +1,23 @@
 package com.pda.servicios;
 
+import com.pda.dao.ProductoRepository;
 import com.pda.modelos.Producto;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
 public class ProductoService {
+private final ProductoRepository productoRepository;
 
-    public ProductoService() {
+    public ProductoService(ProductoRepository productoRepository) {
 
+        this.productoRepository = productoRepository;
     }
 
-    public Producto getProducto()
+    public List<Producto> getProducto()
     {
-        Producto producto = new Producto();
-        return producto;
+        return productoRepository.findAll();
     }
 }

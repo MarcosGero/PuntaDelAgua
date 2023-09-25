@@ -1,12 +1,10 @@
 package com.pda.controladores;
 
 import com.pda.modelos.Venta;
+import com.pda.servicios.VentaService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
 
 
 /* RestController importa los paquetes para indicar que la clase va a ser un controlador */
@@ -17,6 +15,12 @@ import java.util.List;
 
 public class VentaController
 {
+    private final VentaService ventaService;
+
+    public VentaController(VentaService ventaService) {
+        this.ventaService = ventaService;
+    }
+
     /* GetMapping se encarga de definir que la clase de va a comportar como una entidad GET en HTTP*/
     @GetMapping
 

@@ -1,24 +1,36 @@
 package com.pda.modelos;
 
+
+import jakarta.persistence.*;
+
 import java.util.List;
 
 
-
+@Entity
+@Table
 public class Producto {
     private String nombre;
     private double precioMayor;
     private double precioMinorista;
+    @Id
+    @SequenceGenerator(
+            name="prueba",
+            sequenceName = "prueba",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "prueba"
+    )
     private int ID;
     private String detalle;
     private int cantidad;
-    private String lote;
-    private Proveedor proveedor;
-    private List<Venta> ventas;
+    //private Proveedor proveedor;
 
     public Producto() {
         this.nombre = nombre;
         this.detalle = detalle;
-        this.proveedor = proveedor;
+        //this.proveedor = proveedor;
         /*this.ID=id;*/
     }
 
@@ -62,28 +74,6 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public String getLote() {
-        return lote;
-    }
 
-    public void setLote(String lote) {
-        this.lote = lote;
-    }
-
-    public Proveedor getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(Proveedor proveedor) {
-        this.proveedor = proveedor;
-    }
-
-    public List<Venta> getVentas() {
-        return ventas;
-    }
-
-    public void setVentas(List<Venta> ventas) {
-        this.ventas = ventas;
-    }
 // Constructores, getters, setters y otros métodos relevantes...
 }

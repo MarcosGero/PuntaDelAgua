@@ -1,12 +1,10 @@
-package com.pda.controladores;
+package com.pda.temp;
 
-import com.pda.modelos.Proveedor;
+import com.pda.temp.Proveedor;
+import com.pda.temp.ProveedorService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
 
 
 /* RestController importa los paquetes para indicar que la clase va a ser un controlador */
@@ -17,6 +15,11 @@ import java.util.List;
 
 public class ProveedorController
 {
+    private ProveedorService proveedorService;
+
+    public ProveedorController(ProveedorService proveedorService){
+        this.proveedorService = proveedorService;
+    }
     /* GetMapping se encarga de definir que la clase de va a comportar como una entidad GET en HTTP*/
     @GetMapping
 
@@ -24,7 +27,7 @@ public class ProveedorController
     public Proveedor getStock()
     {
         Proveedor proveedor = new Proveedor();
-        return proveedor;
+        return proveedorService.getProveedor();
     }
 
 }

@@ -1,6 +1,20 @@
-package com.pda.modelos;
+package com.pda.temp;
+
+import jakarta.persistence.*;
+
+@Entity
 
 public class Proveedor {
+    @Id
+    @SequenceGenerator(
+            name="prueba",
+            sequenceName = "prueba",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "prueba"
+    )
     private String nombre;
     private String telefono;
     private String correo;
