@@ -1,6 +1,6 @@
 package com.pda.controladores;
 
-import com.pda.modelos.Deposito;
+import com.pda.models.Deposito;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,7 @@ public class DepositoController
     @GetMapping
 
     /* Se define un metodo para poder devolver la informacion del modelo en forma de JSON */
-    public Deposito getFactura()
+    public Deposito getDeposito()
     {
         Deposito deposito = new Deposito();
         return  deposito;

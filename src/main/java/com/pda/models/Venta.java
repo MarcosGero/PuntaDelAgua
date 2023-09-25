@@ -10,7 +10,7 @@ public class Venta {
     private double monto;
     private List<Renglon> renglones;
     public Venta (){
-        
+
     }
 
     public Venta(Date fecha, double monto, List<Renglon> renglones) {
