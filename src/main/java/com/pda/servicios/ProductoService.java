@@ -2,9 +2,12 @@ package com.pda.servicios;
 
 import com.pda.dao.ProductoRepository;
 import com.pda.models.Producto;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -21,4 +24,9 @@ private final ProductoRepository productoRepository;
 
         return productoRepository.findAll();
     }
+    public Optional<Producto> findById(Long id) {
+        return productoRepository.findById(id);
+    }
+
+
 }
