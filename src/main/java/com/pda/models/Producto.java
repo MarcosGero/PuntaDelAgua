@@ -27,6 +27,9 @@ public class Producto {
 
     private int cantidadMinimaMayorista;
     private String proveedor;
+    public Producto (){
+
+    }
 
     public Producto(int id, String nombre, String detalle, String proveedor, int cantidadMinimaMayorista) {
         this.ID=id;

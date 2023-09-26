@@ -19,24 +19,18 @@ public class Stock {
             generator = "prueba"
     )
     private long Id;
-    private String codigo;//debe serl el mismo que Producto.ID
     private String nombre;//Producto.nombre
     private int stockMinimo;
     private int stockActual;
     private float peso; //Eventualmente no se utilizará (Productos que no se necesiten llevar cuenta de su peso)
 
-    public Stock(String codigo, String nombre) {
-        this.codigo = codigo;
+    public Stock(long codigo, String nombre) {
+        this.Id = codigo;
         this.nombre = nombre;
     }
     @OneToOne
     private Producto producto;
 
-
-    public Stock(String codigo, String nombreProducto, Producto prod) {
-        this.codigo = codigo;
-        this.producto = prod;
-    }
     public Stock(){
 
     }
