@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 @Table
 public class Producto {
-    private int ID; //Será el código de Barras
+     //Será el código de Barras
     private String nombre;
     private double precioMayor;
     private double precioMinorista;
@@ -20,6 +20,7 @@ public class Producto {
             strategy = GenerationType.SEQUENCE,
             generator = "prueba"
     )
+    private long ID;
     private String detalle;
     private int cantidad;
     //private Proveedor proveedor;

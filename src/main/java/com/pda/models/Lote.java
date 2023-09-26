@@ -18,6 +18,10 @@ public class Lote {
             generator = "prueba"
     )
     private long Id;
+
+    @ManyToOne
+    private Stock stock;
+
     private Date fechaDeVencimiento;
     private int cantidad;//Cantidad de Productos con el mismo lote (es decir mismo vencimiento)
 
