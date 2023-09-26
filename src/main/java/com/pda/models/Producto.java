@@ -17,7 +17,7 @@ public class Producto {
             allocationSize = 1
     )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
+            strategy = GenerationType.IDENTITY,
             generator = "prueba"
     )
     private long ID;

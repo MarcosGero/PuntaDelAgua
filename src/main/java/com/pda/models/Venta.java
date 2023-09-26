@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+@Entity
+@Table
 public class Venta {
     @Id
     @SequenceGenerator(
@@ -20,8 +21,9 @@ public class Venta {
     private long id;
     private Date fecha;
     private double monto;
-    @OneToMany
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
     private List<Renglon> renglones;
+
     public Venta (){
 
     }

@@ -15,6 +15,11 @@ public class Renglon {
             generator = "prueba"
     )
     private long Id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "venta_id")
+    private Venta venta;
+
     private String nombre; //Producto.nombre
     private int cantidad;
     private float peso;//Eventualmente no se utiliza
@@ -47,5 +52,9 @@ public class Renglon {
 
     public void setPeso(float peso) {
         this.peso = peso;
+    }
+
+    public void setVenta(Venta venta) {
+        this.venta = venta;
     }
 }

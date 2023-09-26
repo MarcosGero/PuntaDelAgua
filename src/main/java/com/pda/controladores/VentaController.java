@@ -1,10 +1,12 @@
 package com.pda.controladores;
 
+import com.pda.models.Producto;
 import com.pda.models.Venta;
 import com.pda.servicios.VentaService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 /* RestController importa los paquetes para indicar que la clase va a ser un controlador */
@@ -29,6 +31,11 @@ public class VentaController
     {
         Venta venta = new Venta();
         return venta;
+    }
+    @PostMapping
+    public ResponseEntity<Venta> addVenta(@RequestBody List<Producto> productos) {
+        Venta nuevaVenta = ventaService.createVentaFromProductos(productos);
+        return ResponseEntity.ok(nuevaVenta);
     }
 
 }
