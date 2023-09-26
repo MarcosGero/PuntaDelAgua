@@ -1,13 +1,26 @@
 package com.pda.models;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Venta {
+    @Id
+    @SequenceGenerator(
+            name="prueba",
+            sequenceName = "prueba",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "prueba"
+    )
+    private long id;
     private Date fecha;
     private double monto;
+    @OneToMany
     private List<Renglon> renglones;
     public Venta (){
 

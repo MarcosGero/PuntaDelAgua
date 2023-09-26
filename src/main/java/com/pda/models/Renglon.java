@@ -1,6 +1,20 @@
 package com.pda.models;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Renglon {
+    @Id
+    @SequenceGenerator(
+            name="prueba",
+            sequenceName = "prueba",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "prueba"
+    )
+    private long Id;
     private String nombre; //Producto.nombre
     private int cantidad;
     private float peso;//Eventualmente no se utiliza

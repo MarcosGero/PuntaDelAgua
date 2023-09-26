@@ -1,12 +1,23 @@
 package com.pda.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 @Entity
 @Table
 public class Lote {
+
+    @Id
+    @SequenceGenerator(
+            name="prueba",
+            sequenceName = "prueba",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "prueba"
+    )
+    private long Id;
     private Date fechaDeVencimiento;
     private int cantidad;//Cantidad de Productos con el mismo lote (es decir mismo vencimiento)
 

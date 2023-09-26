@@ -1,6 +1,7 @@
 package com.pda.models;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import jakarta.persistence.OneToMany;
 
 import java.util.List;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
@@ -11,13 +12,13 @@ public class Stock {
     private int stockActual;
     private float peso; //Eventualmente no se utilizará (Productos que no se necesiten llevar cuenta de su peso)
 
-    private Lote lote;
-
     public Stock(String codigo, String nombre) {
         this.codigo = codigo;
         this.nombre = nombre;
     }
     private Producto producto;
+
+    @OneToMany
     private List<Lote> lotes;
 
     public Stock(String codigo, String nombreProducto, Producto prod) {
