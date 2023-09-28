@@ -18,16 +18,17 @@ public class Lote {
             generator = "prueba"
     )
     private long Id;
-
-    @ManyToOne
-    private Stock stock;
-
+    private long stockid;
     private Date fechaDeVencimiento;
     private int cantidad;//Cantidad de Productos con el mismo lote (es decir mismo vencimiento)
 
     public Lote(Date fechaDeVencimiento, int cantidad) {
         this.fechaDeVencimiento = fechaDeVencimiento;
         this.cantidad = cantidad;
+    }
+
+    public Lote() {
+
     }
 
     public Date getFechaDeVencimiento() {
@@ -44,5 +45,13 @@ public class Lote {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public long getStockId() {
+        return stockid;
+    }
+
+    public void setStockId(long stockid) {
+        this.stockid = stockid;
     }
 }
