@@ -18,18 +18,17 @@ public class Stock {
             strategy = GenerationType.SEQUENCE,
             generator = "prueba"
     )
-    private long Id;
+    @OneToOne
+    private Producto producto;
     private String nombre;//Producto.nombre
     private int stockMinimo;
     private int stockActual;
     private float peso; //Eventualmente no se utilizará (Productos que no se necesiten llevar cuenta de su peso)
 
-    public Stock(long codigo, String nombre) {
-        this.Id = codigo;
+    public Stock( String nombre) {
         this.nombre = nombre;
     }
-    @OneToOne
-    private Producto producto;
+
 
     public Stock(){
 
