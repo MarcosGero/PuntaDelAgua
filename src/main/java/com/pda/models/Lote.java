@@ -1,5 +1,6 @@
 package com.pda.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -17,6 +18,7 @@ public class Lote {
             strategy = GenerationType.SEQUENCE,
             generator = "prueba"
     )
+    @JsonProperty
     private long Id;
     private long stockid;
     private Date fechaDeVencimiento;
