@@ -12,6 +12,6 @@ import java.security.Signature;
 @Repository
 public interface LoteRepository extends JpaRepository<Lote, Long> {
 
-    @Query("SELECT l FROM Lote l WHERE l.stockid = :productoId")
+    @Query("SELECT * FROM lote WHERE stockid = :productoId")
     public List<Lote> findByProductoId(@Param("productoId") Long productoId);
 }
