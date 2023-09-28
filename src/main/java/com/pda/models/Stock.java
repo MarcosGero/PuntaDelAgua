@@ -2,12 +2,11 @@ package com.pda.models;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import jakarta.persistence.*;
-
 import java.util.List;
 @Entity
 @Table
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
-public class Stock {
+public class Stock  {
     @Id
     @SequenceGenerator(
             name="prueba",
@@ -18,18 +17,17 @@ public class Stock {
             strategy = GenerationType.SEQUENCE,
             generator = "prueba"
     )
-    private long Id;
+
+    private long productoId;
     private String nombre;//Producto.nombre
     private int stockMinimo;
     private int stockActual;
     private float peso; //Eventualmente no se utilizará (Productos que no se necesiten llevar cuenta de su peso)
 
     public Stock(long codigo, String nombre) {
-        this.Id = codigo;
         this.nombre = nombre;
     }
-    @OneToOne
-    private Producto producto;
+
 
     public Stock(){
 

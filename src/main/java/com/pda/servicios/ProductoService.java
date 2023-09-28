@@ -21,7 +21,6 @@ private final ProductoRepository productoRepository;
 
     public List<Producto> getProducto()
     {
-
         return productoRepository.findAll();
     }
     public Optional<Producto> findById(Long id) {

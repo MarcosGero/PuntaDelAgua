@@ -21,15 +21,13 @@ public class Producto {
             generator = "prueba"
     )
     private long ID;
-    private String detalle;
-    private int cantidad;
-    //private Proveedor proveedor;
 
-    private int cantidadMinimaMayorista;
-    private String proveedor;
     public Producto (){
 
     }
+    private String detalle;
+    private int cantidadMinimaMayorista;
+    private String proveedor;
 
     public Producto(int id, String nombre, String detalle, String proveedor, int cantidadMinimaMayorista) {
         this.ID=id;
@@ -71,13 +69,6 @@ public class Producto {
         this.detalle = detalle;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
     public String getProveedor() {
         return proveedor;
     }
