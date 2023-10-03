@@ -29,13 +29,11 @@ public class Producto {
     }
     private String detalle;
     private int cantidadMinimaMayorista;
-    private String proveedor;
 
     public Producto(int id, String nombre, String detalle, String proveedor, int cantidadMinimaMayorista) {
         this.Id=id;
         this.nombre = nombre;
         this.detalle = detalle;
-        this.proveedor = proveedor;
         this.cantidadMinimaMayorista = cantidadMinimaMayorista;
     }
 
@@ -69,14 +67,6 @@ public class Producto {
 
     public void setDetalle(String detalle) {
         this.detalle = detalle;
-    }
-
-    public String getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(String proveedor) {
-        this.proveedor = proveedor;
     }
 
     public int getCantidadMinimaMayorista() {
