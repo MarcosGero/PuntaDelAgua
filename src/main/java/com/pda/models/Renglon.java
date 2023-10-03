@@ -30,6 +30,10 @@ public class Renglon {
         this.peso = peso;
     }
 
+    public Renglon() {
+
+    }
+
     public String getNombre() {
         return nombre;
     }

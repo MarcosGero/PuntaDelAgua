@@ -20,7 +20,7 @@ public class Lote {
     )
     @JsonProperty
     private long Id;
-    private long stockid;
+    private long productId;
     private Date fechaDeVencimiento;
     private int cantidad;//Cantidad de Productos con el mismo lote (es decir mismo vencimiento)
 
@@ -49,11 +49,11 @@ public class Lote {
         this.cantidad = cantidad;
     }
 
-    public long getStockId() {
-        return stockid;
+    public long getProductId() {
+        return productId;
     }
 
-    public void setStockId(long stockid) {
-        this.stockid = stockid;
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 }
