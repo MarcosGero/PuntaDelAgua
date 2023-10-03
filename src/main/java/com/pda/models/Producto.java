@@ -1,5 +1,6 @@
 
 package com.pda.models;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -20,7 +21,8 @@ public class Producto {
             strategy = GenerationType.IDENTITY,
             generator = "prueba"
     )
-    private long ID;
+    @JsonProperty
+    private long Id;
 
     public Producto (){
 
@@ -30,7 +32,7 @@ public class Producto {
     private String proveedor;
 
     public Producto(int id, String nombre, String detalle, String proveedor, int cantidadMinimaMayorista) {
-        this.ID=id;
+        this.Id=id;
         this.nombre = nombre;
         this.detalle = detalle;
         this.proveedor = proveedor;
