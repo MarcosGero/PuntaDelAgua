@@ -30,11 +30,16 @@ public class Producto {
     private String detalle;
     private int cantidadMinimaMayorista;
 
-    public Producto(int id, String nombre, String detalle, String proveedor, int cantidadMinimaMayorista) {
+    private int stockMinimo;
+
+    public Producto(int id, String nombre, String detalle, int cantidadMinimaMayorista, double precioMinorista, double precioMayor, int stockMinimo) {
         this.Id=id;
         this.nombre = nombre;
         this.detalle = detalle;
         this.cantidadMinimaMayorista = cantidadMinimaMayorista;
+        this.precioMinorista = precioMinorista;
+        this.precioMayor = precioMayor;
+        this.stockMinimo = stockMinimo;
     }
 
     public String getNombre() {
@@ -73,6 +78,9 @@ public class Producto {
         return cantidadMinimaMayorista;
     }
 
+    public int getStockMinimo () {return this.stockMinimo;};
+
+    public void setStockMinimo (int stockMinimo) {this.stockMinimo = stockMinimo;};
     public void setCantidadMinimaMayorista(int cantidadMinimaMayorista) {
         this.cantidadMinimaMayorista = cantidadMinimaMayorista;
     }

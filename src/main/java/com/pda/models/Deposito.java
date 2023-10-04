@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Deposito {
-    private List<Stock> stocks;
 
     public Deposito(){
 
