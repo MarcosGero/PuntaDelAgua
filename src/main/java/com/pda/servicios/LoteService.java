@@ -20,6 +20,10 @@ public class LoteService {
         return loteRepository.findAll();
     }
 
+    public void deleteLoteById(Long loteId) {
+        loteRepository.deleteById(loteId);
+    }
+
     public List<Lote> findByProductoId(Long productoId) {
         return loteRepository.findByProductoId(productoId);
     }

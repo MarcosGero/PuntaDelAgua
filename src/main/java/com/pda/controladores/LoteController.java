@@ -3,6 +3,7 @@ package com.pda.controladores;
 import com.pda.models.Lote;
 import com.pda.servicios.LoteService;
 import com.pda.dao.LoteRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,4 +44,20 @@ public class LoteController
         List<Lote> lotes = service.findByProductoId(id);
         return ResponseEntity.ok(lotes);
     }
+    @DeleteMapping("/{loteId}")
+    public ResponseEntity<String> deleteLote(@PathVariable Long loteId) {
+        try {
+            // Agregar un registro para verificar el ID del lote que se va a eliminar
+            System.out.println("Intentando eliminar el lote con ID: " + loteId);
+
+            service.deleteLoteById(loteId); // Donde "deleteLoteById" es un método en tu servicio para eliminar un lote por su ID.
+            return ResponseEntity.ok("Lote eliminado correctamente.");
+        } catch (Exception e) {
+            // Agregar un registro para mostrar cualquier error que ocurra
+            System.err.println("Error al eliminar el lote: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al eliminar el lote.");
+        }
+    }
+
+
 }
