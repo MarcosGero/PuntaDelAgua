@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LoteService {
@@ -24,6 +25,17 @@ public class LoteService {
 
     public void deleteLoteById(Long loteId) {
         loteRepository.deleteById(loteId);
+    }
+
+    public Lote actualizarCantidadLote(Long id, Lote loteActualizado) {
+        Optional<Lote> loteOptional = loteRepository.findById(id);
+        if (loteOptional.isPresent()) {
+            Lote loteExistente = loteOptional.get();
+            loteExistente.setCantidad(loteActualizado.getCantidad());
+            return loteRepository.save(loteExistente);
+        } else {
+            return null;
+        }
     }
 
     public List<Lote> findByProductoId(Long productoId) {
