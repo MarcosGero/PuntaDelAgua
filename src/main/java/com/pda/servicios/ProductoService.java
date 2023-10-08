@@ -1,10 +1,8 @@
 package com.pda.servicios;
 
-import com.pda.dao.ProductoRepository;
+import com.pda.dao.ProductoDAO;
 import com.pda.models.Producto;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,19 +10,19 @@ import java.util.Optional;
 
 @Service
 public class ProductoService {
-private final ProductoRepository productoRepository;
+private final ProductoDAO productoDAO;
 
-    public ProductoService(ProductoRepository productoRepository) {
+    public ProductoService(ProductoDAO productoDAO) {
 
-        this.productoRepository = productoRepository;
+        this.productoDAO = productoDAO;
     }
 
     public List<Producto> getProducto()
     {
-        return productoRepository.findAll();
+        return productoDAO.findAll();
     }
     public Optional<Producto> findById(Long id) {
-        return productoRepository.findById(id);
+        return productoDAO.findById(id);
     }
 
 

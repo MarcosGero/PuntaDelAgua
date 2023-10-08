@@ -2,7 +2,6 @@ package com.pda.controladores;
 
 import com.pda.models.Lote;
 import com.pda.servicios.LoteService;
-import com.pda.dao.LoteRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

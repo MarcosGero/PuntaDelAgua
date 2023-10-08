@@ -1,9 +1,7 @@
 package com.pda.servicios;
 
-import com.pda.dao.LoteRepository;
-import com.pda.dao.ProductoRepository;
+import com.pda.dao.LoteDAO;
 import com.pda.models.Lote;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,19 +10,19 @@ import java.util.Optional;
 @Service
 public class LoteService {
 
-    private final LoteRepository loteRepository;
+    private final LoteDAO loteDAO;
 
-    public LoteService(LoteRepository loteRepository) {
+    public LoteService(LoteDAO loteDAO) {
 
-        this.loteRepository = loteRepository;
+        this.loteDAO = loteDAO;
     }
 
     public List<Lote> findAll() {
-        return loteRepository.findAll();
+        return loteDAO.findAll();
     }
 
     public void deleteLoteById(Long loteId) {
-        loteRepository.deleteById(loteId);
+        loteDAO.deleteById(loteId);
     }
 
     public Lote actualizarCantidadLote(Long id, Lote loteActualizado) {
@@ -39,6 +37,6 @@ public class LoteService {
     }
 
     public List<Lote> findByProductoId(Long productoId) {
-        return loteRepository.findByProductoId(productoId);
+        return loteDAO.findByProductoId(productoId);
     }
 }

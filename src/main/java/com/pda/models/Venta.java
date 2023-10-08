@@ -19,6 +19,27 @@ public class Venta {
             generator = "prueba"
     )
     private long id;
+    @Enumerated(EnumType.STRING)
+    private TipoFactura tipoFactura;
+    @Enumerated(EnumType.STRING)
+    private TipoVenta tipoVenta;
+
+    public TipoVenta getTipoVenta() {
+        return tipoVenta;
+    }
+
+    public void setTipoVenta(TipoVenta tipoVenta) {
+        this.tipoVenta = tipoVenta;
+    }
+
+    public TipoFactura getTipoFactura() {
+        return tipoFactura;
+    }
+
+    public void setTipoFactura(TipoFactura tipoFactura) {
+        this.tipoFactura = tipoFactura;
+    }
+
     private Date fecha;
     private double monto;
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)

@@ -22,12 +22,10 @@ public class Renglon {
 
     private String nombre; //Producto.nombre
     private int cantidad;
-    private float peso;//Eventualmente no se utiliza
 
-    public Renglon(String nombre, int cantidad, float peso) {
+    public Renglon(String nombre, int cantidad) {
         this.nombre = nombre;
         this.cantidad = cantidad;
-        this.peso = peso;
     }
 
     public Renglon() {
@@ -48,14 +46,6 @@ public class Renglon {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-    }
-
-    public float getPeso() {
-        return peso;
-    }
-
-    public void setPeso(float peso) {
-        this.peso = peso;
     }
 
     public void setVenta(Venta venta) {
