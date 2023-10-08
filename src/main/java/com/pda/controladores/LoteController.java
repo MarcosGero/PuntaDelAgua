@@ -59,5 +59,19 @@ public class LoteController
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Lote> actualizarCantidadLote(@PathVariable Long id, @RequestBody Lote loteActualizado) {
+        try {
+            Lote loteExistente = service.actualizarCantidadLote(id, loteActualizado);
+            if (loteExistente != null) {
+                return ResponseEntity.ok(loteExistente);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
 
 }
