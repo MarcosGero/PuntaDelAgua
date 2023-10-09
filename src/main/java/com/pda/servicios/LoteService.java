@@ -26,11 +26,11 @@ public class LoteService {
     }
 
     public Lote actualizarCantidadLote(Long id, Lote loteActualizado) {
-        Optional<Lote> loteOptional = loteRepository.findById(id);
+        Optional<Lote> loteOptional = loteDAO.findById(id);
         if (loteOptional.isPresent()) {
             Lote loteExistente = loteOptional.get();
             loteExistente.setCantidad(loteActualizado.getCantidad());
-            return loteRepository.save(loteExistente);
+            return loteDAO.save(loteExistente);
         } else {
             return null;
         }
