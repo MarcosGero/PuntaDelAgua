@@ -30,7 +30,6 @@ public class LoteController
 
 
 
-    /* Se define un metodo para poder devolver la informacion del modelo en forma de JSON */
 
     @GetMapping
     public ResponseEntity<List<Lote>> getLote() {
