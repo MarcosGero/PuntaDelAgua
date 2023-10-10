@@ -1,6 +1,5 @@
 package com.pda.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,7 +14,6 @@ public class Renglon {
             strategy = GenerationType.SEQUENCE,
             generator = "prueba"
     )
-    @JsonProperty
     private long Id;
 
     @ManyToOne(fetch = FetchType.LAZY)

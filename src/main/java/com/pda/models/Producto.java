@@ -22,11 +22,7 @@ public class Producto {
             generator = "prueba"
     )
     @JsonProperty
-<<<<<<< Updated upstream
     private long Id;
-=======
-    private long ID;
->>>>>>> Stashed changes
 
     public Producto (){
 
