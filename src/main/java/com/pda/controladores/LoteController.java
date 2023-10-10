@@ -2,7 +2,6 @@ package com.pda.controladores;
 
 import com.pda.models.Lote;
 import com.pda.servicios.LoteService;
-import com.pda.dao.LoteRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +30,6 @@ public class LoteController
 
 
 
-    /* Se define un metodo para poder devolver la informacion del modelo en forma de JSON */
 
     @GetMapping
     public ResponseEntity<List<Lote>> getLote() {
