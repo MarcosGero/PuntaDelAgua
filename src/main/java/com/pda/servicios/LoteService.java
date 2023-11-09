@@ -3,7 +3,6 @@ package com.pda.servicios;
 import com.pda.dao.LoteDAO;
 import com.pda.models.Lote;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
