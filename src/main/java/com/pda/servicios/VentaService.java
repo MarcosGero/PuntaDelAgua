@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class VentaService {
@@ -26,6 +27,9 @@ public class VentaService {
     public List<Venta> getAllVentas() {
         return ventaDAO.findAll();
     }
+    public void cancelVentaById(Long ventaId) {
+        ventaDAO.deleteById(ventaId);
+    }
     public Venta createVentaFromProductos(List<Producto> productos) {
         Venta venta = new Venta();
         venta.setFecha(new Date()); // Establecer la fecha actual
@@ -40,7 +44,7 @@ public class VentaService {
 
             if (renglon == null) {
                 // Si el producto no está en los renglones, crear un nuevo renglón
-                renglon = new Renglon(producto.getNombre(), 0); // Inicializar con cantidad 0 porque se incrementará más adelante
+                renglon = new Renglon(producto.getNombre(), 0,producto.getPrecioMinorista()); // Inicializar con cantidad 0 porque se incrementará más adelante
                 renglon.setVenta(venta); // Asociar el renglon con la venta
                 renglones.add(renglon);
                 renglonMap.put(producto.getNombre(), renglon);
@@ -56,6 +60,5 @@ public class VentaService {
 
         return ventaDAO.save(venta); // Guardar la venta y los renglones en la base de datos
     }
-
 
 }

@@ -1,19 +1,21 @@
 package com.pda.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
 public class Renglon {
     @Id
     @SequenceGenerator(
-            name="prueba",
-            sequenceName = "prueba",
-            allocationSize = 1
+            name="renglon_generator",
+            sequenceName = "renglon_sequence",
+            allocationSize = 50
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "prueba"
+            generator = "renglon_generator"
     )
+    @JsonProperty
     private long Id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -23,9 +25,20 @@ public class Renglon {
     private String nombre; //Producto.nombre
     private int cantidad;
 
-    public Renglon(String nombre, int cantidad) {
+    private double monto;
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public Renglon(String nombre, int cantidad,double monto) {
         this.nombre = nombre;
         this.cantidad = cantidad;
+        this.monto = monto;
     }
 
     public Renglon() {
