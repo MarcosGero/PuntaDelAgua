@@ -23,7 +23,21 @@ public class Renglon {
     private String nombre; //Producto.nombre
     private int cantidad;
 
+<<<<<<< Updated upstream
     public Renglon(String nombre, int cantidad) {
+=======
+    private double monto;
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public Renglon(String nombre, int cantidad, double monto) {
+>>>>>>> Stashed changes
         this.nombre = nombre;
         this.cantidad = cantidad;
     }
