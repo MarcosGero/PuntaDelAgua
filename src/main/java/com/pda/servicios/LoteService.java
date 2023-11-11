@@ -35,6 +35,10 @@ public class LoteService {
         }
     }
 
+    public Lote saveLote(Lote nuevoLote) {
+        return loteDAO.save(nuevoLote);
+    }
+
     public List<Lote> findByProductoId(Long productoId) {
         return loteDAO.findByProductoId(productoId);
     }

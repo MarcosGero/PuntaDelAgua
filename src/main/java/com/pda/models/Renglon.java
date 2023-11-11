@@ -35,7 +35,8 @@ public class Renglon {
         this.monto = monto;
     }
 
-    public Renglon(String nombre, int cantidad,double monto) {
+    public Renglon(String nombre, int cantidad, double monto) {
+
         this.nombre = nombre;
         this.cantidad = cantidad;
         this.monto = monto;
