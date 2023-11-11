@@ -19,10 +19,10 @@ public class Renglon {
     private long Id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "venta_id")
+    @JoinColumn(name = "venta_id", nullable = false)
     private Venta venta;
-
-    private String nombre; //Producto.nombre
+    @OneToOne(fetch = FetchType.LAZY)
+    private Producto producto;
     private int cantidad;
 
     private double monto;
@@ -35,8 +35,8 @@ public class Renglon {
         this.monto = monto;
     }
 
-    public Renglon(String nombre, int cantidad,double monto) {
-        this.nombre = nombre;
+    public Renglon(Producto producto, int cantidad,double monto) {
+        this.producto = producto;
         this.cantidad = cantidad;
         this.monto = monto;
     }
@@ -45,12 +45,12 @@ public class Renglon {
 
     }
 
-    public String getNombre() {
-        return nombre;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public int getCantidad() {

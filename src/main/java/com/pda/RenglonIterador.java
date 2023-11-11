@@ -15,7 +15,7 @@ public class RenglonIterador implements Iterador<Renglon> {
         for (Producto producto : productos) {
             Renglon renglon = renglonMap.get(producto.getNombre());
             if (renglon == null) {
-                renglon = new Renglon(producto.getNombre(), 1, producto.getPrecioMinorista());
+                renglon = new Renglon(producto, 1, producto.getPrecioMinorista());
                 renglonMap.put(producto.getNombre(), renglon);
             } else {
                 renglon.setCantidad(renglon.getCantidad() + 1);

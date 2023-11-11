@@ -32,19 +32,16 @@ public class VentaService {
     public void cancelVentaById(Long ventaId) {
         ventaDAO.deleteById(ventaId);
     }
-    public Venta createVentaFromProductos(List<Producto> productos) {
-        Iterador<Renglon> iterador = new RenglonIterador(productos);
-        List<Renglon> renglones = new ArrayList<>();
+    public Venta createVenta(Venta venta) {
         double total = 0;
 
-        while(iterador.hasNext()) {
-            Renglon renglon = iterador.next();
-            renglones.add(renglon);
-            total += renglon.getCantidad() * renglon.getMonto();
+        for (Renglon renglon : venta.getRenglones()) {
+            renglon.setVenta(venta);
+            total += renglon.getMonto();
         }
 
-        Venta venta = new Venta(new Date(),total,renglones,TipoFactura.A,TipoVenta.MINORISTA);
-        return ventaDAO.save(venta); // Guardar la venta y los renglones en la base de datos
+        venta.setMonto(total);
+        return ventaDAO.save(venta);
     }
 
 }

@@ -44,7 +44,7 @@ public class Venta {
 
     private Date fecha;
     private double monto;
-    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Renglon> renglones;
 
     public Venta (){
