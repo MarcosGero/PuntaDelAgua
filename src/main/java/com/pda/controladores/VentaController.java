@@ -47,8 +47,8 @@ public class VentaController
         }
     }
     @PostMapping
-    public ResponseEntity<Venta> addVenta(@RequestBody List<Producto> productos) {
-        Venta nuevaVenta = ventaService.createVentaFromProductos(productos);
+    public ResponseEntity<Venta> addVenta(@RequestBody Venta venta) {
+        Venta nuevaVenta = ventaService.createVenta(venta);
         return ResponseEntity.ok(nuevaVenta);
     }
 
