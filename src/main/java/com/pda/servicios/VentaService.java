@@ -1,5 +1,8 @@
 package com.pda.servicios;
 
+import com.pda.Iterador;
+
+import com.pda.RenglonIterador;
 import com.pda.dao.VentaDAO;
 import com.pda.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,36 +29,22 @@ public class VentaService {
     public List<Venta> getAllVentas() {
         return ventaDAO.findAll();
     }
+    public void cancelVentaById(Long ventaId) {
+        ventaDAO.deleteById(ventaId);
+    }
     public Venta createVentaFromProductos(List<Producto> productos) {
-        Venta venta = new Venta();
-        venta.setFecha(new Date()); // Establecer la fecha actual
-        venta.setTipoVenta(TipoVenta.MINORISTA);
-        venta.setTipoFactura(TipoFactura.A);
+        Iterador<Renglon> iterador = new RenglonIterador(productos);
         List<Renglon> renglones = new ArrayList<>();
-        Map<String, Renglon> renglonMap = new HashMap<>();
         double total = 0;
 
-        for (Producto producto : productos) {
-            Renglon renglon = renglonMap.get(producto.getNombre());
-
-            if (renglon == null) {
-                // Si el producto no está en los renglones, crear un nuevo renglón
-                renglon = new Renglon(producto.getNombre(), 0); // Inicializar con cantidad 0 porque se incrementará más adelante
-                renglon.setVenta(venta); // Asociar el renglon con la venta
-                renglones.add(renglon);
-                renglonMap.put(producto.getNombre(), renglon);
-            }
-
-            // Incrementar la cantidad del renglón
-            renglon.setCantidad(renglon.getCantidad() + 1);
-            total += producto.getPrecioMinorista(); // Sumar al total
+        while(iterador.hasNext()) {
+            Renglon renglon = iterador.next();
+            renglones.add(renglon);
+            total += renglon.getCantidad() * renglon.getMonto();
         }
 
-        venta.setRenglones(renglones); // Asociar los renglones con la venta
-        venta.setMonto(total);
-
+        Venta venta = new Venta(new Date(),total,renglones,TipoFactura.A,TipoVenta.MINORISTA);
         return ventaDAO.save(venta); // Guardar la venta y los renglones en la base de datos
     }
-
 
 }

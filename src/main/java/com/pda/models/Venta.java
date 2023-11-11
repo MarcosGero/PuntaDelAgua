@@ -1,6 +1,7 @@
 package com.pda.models;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -10,15 +11,16 @@ import java.util.List;
 public class Venta {
     @Id
     @SequenceGenerator(
-            name="prueba",
-            sequenceName = "prueba",
-            allocationSize = 1
+            name="venta_generator",
+            sequenceName = "venta_sequence",
+            allocationSize = 50
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "prueba"
+            generator = "venta_generator"
     )
-    private long id;
+    @JsonProperty
+    private long Id;
     @Enumerated(EnumType.STRING)
     private TipoFactura tipoFactura;
     @Enumerated(EnumType.STRING)
@@ -49,10 +51,12 @@ public class Venta {
 
     }
 
-    public Venta(Date fecha, double monto, List<Renglon> renglones) {
+    public Venta(Date fecha, double monto, List<Renglon> renglones,TipoFactura tipoFactura, TipoVenta tipoVenta) {
         this.fecha = fecha;
         this.monto = monto;
         this.renglones = renglones;
+        this.tipoVenta = tipoVenta;
+        this.tipoFactura = tipoFactura;
     }
 
     public Date getFecha() {
