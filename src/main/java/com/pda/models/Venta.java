@@ -51,10 +51,12 @@ public class Venta {
 
     }
 
-    public Venta(Date fecha, double monto, List<Renglon> renglones) {
+    public Venta(Date fecha, double monto, List<Renglon> renglones,TipoFactura tipoFactura, TipoVenta tipoVenta) {
         this.fecha = fecha;
         this.monto = monto;
         this.renglones = renglones;
+        this.tipoVenta = tipoVenta;
+        this.tipoFactura = tipoFactura;
     }
 
     public Date getFecha() {

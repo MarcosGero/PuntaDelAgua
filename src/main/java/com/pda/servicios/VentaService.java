@@ -43,10 +43,7 @@ public class VentaService {
             total += renglon.getCantidad() * renglon.getMonto();
         }
 
-        Venta venta = new Venta();
-        venta.setRenglones(renglones);
-        venta.setMonto(total);
-
+        Venta venta = new Venta(new Date(),total,renglones,TipoFactura.A,TipoVenta.MINORISTA);
         return ventaDAO.save(venta); // Guardar la venta y los renglones en la base de datos
     }
 
