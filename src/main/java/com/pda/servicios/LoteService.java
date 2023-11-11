@@ -34,8 +34,13 @@ public class LoteService {
             return null;
         }
     }
-
+    public Long obtenerUltimaId() {
+        Long ultimaId = loteDAO.findMaxId(); // Deberás crear este método en tu LoteDAO.
+        return ultimaId != null ? ultimaId + 1 : 1L; // Si no hay registros, asigna 1 como primera ID.
+    }
     public Lote saveLote(Lote nuevoLote) {
+        Long ultimaId = obtenerUltimaId();
+        nuevoLote.setId(ultimaId);
         return loteDAO.save(nuevoLote);
     }
 
