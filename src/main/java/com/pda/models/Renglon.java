@@ -21,7 +21,7 @@ public class Renglon {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "venta_id", nullable = false)
     private Venta venta;
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Producto producto;
     private int cantidad;
 
