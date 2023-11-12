@@ -36,14 +36,14 @@ public class VentaService {
         ventaDAO.deleteById(ventaId);
     }
     public Venta createVenta(Venta venta) {
-        double total = 0;
+        RenglonIterador renglonIterador = new RenglonIterador(venta.getRenglones());
 
-        for (Renglon renglon : venta.getRenglones()) {
-            renglon.setVenta(venta);
-            total += renglon.getMonto();
+
+        while (renglonIterador.hasNext()) {
+            renglonIterador.next().setVenta(venta);
         }
-
-        venta.setMonto(total);
+        venta.setMonto(renglonIterador.sumarMontos());//Para encapsulacion aunque haga dos vueltas, se usa el sumarMontos del mismo iterador
+        //Calculo el monto en el back para consistencia de datos. asegurarse de que al guardar los renglones el monto de la venta se corresponda con esos renglones.
         return ventaDAO.save(venta);
     }
 
