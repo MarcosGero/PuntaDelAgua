@@ -5,6 +5,7 @@ import com.pda.Iterador;
 import com.pda.RenglonIterador;
 import com.pda.dao.VentaDAO;
 import com.pda.models.*;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,24 +28,23 @@ public class VentaService {
 
     // Método para obtener todas las ventas por siaca
     public List<Venta> getAllVentas() {
-        return ventaDAO.findAll();
+        List<Venta> ventas = ventaDAO.findAll();
+        ventas.forEach(venta -> Hibernate.initialize(venta.getRenglones()));
+        return ventas;
     }
     public void cancelVentaById(Long ventaId) {
         ventaDAO.deleteById(ventaId);
     }
-    public Venta createVentaFromProductos(List<Producto> productos) {
-        Iterador<Renglon> iterador = new RenglonIterador(productos);
-        List<Renglon> renglones = new ArrayList<>();
-        double total = 0;
+    public Venta createVenta(Venta venta) {
+        RenglonIterador renglonIterador = new RenglonIterador(venta.getRenglones());
 
-        while(iterador.hasNext()) {
-            Renglon renglon = iterador.next();
-            renglones.add(renglon);
-            total += renglon.getCantidad() * renglon.getMonto();
+
+        while (renglonIterador.hasNext()) {
+            renglonIterador.next().setVenta(venta);
         }
-
-        Venta venta = new Venta(new Date(),total,renglones,TipoFactura.A,TipoVenta.MINORISTA);
-        return ventaDAO.save(venta); // Guardar la venta y los renglones en la base de datos
+        venta.setMonto(renglonIterador.sumarMontos());//Para encapsulacion aunque haga dos vueltas, se usa el sumarMontos del mismo iterador
+        //Calculo el monto en el back para consistencia de datos. asegurarse de que al guardar los renglones el monto de la venta se corresponda con esos renglones.
+        return ventaDAO.save(venta);
     }
 
 }

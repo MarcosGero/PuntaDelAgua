@@ -2,36 +2,55 @@ package com.pda;
 
 import com.pda.models.Producto;
 import com.pda.models.Renglon;
+import com.pda.models.Venta;
 
 import java.util.*;
 
-// Implementación concreta para Productos
 public class RenglonIterador implements Iterador<Renglon> {
-    private Iterator<Renglon> iterator;
+    private List<Renglon> renglonesAgrupados;
+    private int currentIndex = 0;
 
-    public RenglonIterador(List<Producto> productos) {
-        Map<String, Renglon> renglonMap = new HashMap<>();
+    public RenglonIterador(List<Renglon> renglonesOriginales) {
+        Map<Long, Renglon> renglonMap = new HashMap<>();
 
-        for (Producto producto : productos) {
-            Renglon renglon = renglonMap.get(producto.getNombre());
-            if (renglon == null) {
-                renglon = new Renglon(producto.getNombre(), 1, producto.getPrecioMinorista());
-                renglonMap.put(producto.getNombre(), renglon);
+        for (Renglon renglon : renglonesOriginales) {
+            Long productId = renglon.getProducto().getId();
+            Renglon renglonExistente = renglonMap.get(productId);
+
+            if (renglonExistente == null) {
+                renglonMap.put(productId, renglon);
             } else {
-                renglon.setCantidad(renglon.getCantidad() + 1);
+                renglonExistente.setCantidad(renglonExistente.getCantidad() + renglon.getCantidad());
+                renglonExistente.setMonto(renglonExistente.getMonto() + renglon.getMonto());
             }
         }
 
-        this.iterator = renglonMap.values().iterator();
+        this.renglonesAgrupados = new ArrayList<>(renglonMap.values());
     }
+
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        return currentIndex < renglonesAgrupados.size();
     }
 
     @Override
     public Renglon next() {
-        return iterator.hasNext() ? iterator.next() : null;
+        if (!hasNext()) {
+            throw new NoSuchElementException("No hay más elementos en el iterador");
+        }
+        return renglonesAgrupados.get(currentIndex++);
+    }
+
+    public double sumarMontos() {
+        double total = 0;
+        for (Renglon renglon : renglonesAgrupados) {
+            total += renglon.getMonto();
+        }
+        return total;
+    }
+
+    public int contarElementos() {
+        return renglonesAgrupados.size();
     }
 }

@@ -1,5 +1,7 @@
 package com.pda.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -18,11 +20,12 @@ public class Renglon {
     @JsonProperty
     private long Id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "venta_id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "venta_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "renglones"})
     private Venta venta;
-
-    private String nombre; //Producto.nombre
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Producto producto;
     private int cantidad;
 
     private double monto;
@@ -35,9 +38,8 @@ public class Renglon {
         this.monto = monto;
     }
 
-    public Renglon(String nombre, int cantidad, double monto) {
-
-        this.nombre = nombre;
+    public Renglon(Producto producto, int cantidad,double monto) {
+        this.producto = producto;
         this.cantidad = cantidad;
         this.monto = monto;
     }
@@ -46,12 +48,12 @@ public class Renglon {
 
     }
 
-    public String getNombre() {
-        return nombre;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public int getCantidad() {

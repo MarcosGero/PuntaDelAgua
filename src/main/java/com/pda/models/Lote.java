@@ -9,22 +9,14 @@ import java.util.Date;
 public class Lote {
 
     @Id
-    @SequenceGenerator(
-            name="prueba",
-            sequenceName = "prueba",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "prueba"
-    )
     @JsonProperty
     private long Id;
     private long productId;
     private Date fechaDeVencimiento;
     private int cantidad;//Cantidad de Productos con el mismo lote (es decir mismo vencimiento)
 
-    public Lote(Date fechaDeVencimiento, int cantidad) {
+    public Lote(long productId, Date fechaDeVencimiento, int cantidad) {
+        this.productId = productId;
         this.fechaDeVencimiento = fechaDeVencimiento;
         this.cantidad = cantidad;
     }
@@ -52,7 +44,9 @@ public class Lote {
     public long getProductId() {
         return productId;
     }
-
+    public void setId(long Id) {
+        this.Id = Id;
+    }
     public void setProductId(long productId) {
         this.productId = productId;
     }
