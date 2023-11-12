@@ -23,8 +23,8 @@ public class VentaSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if (ventaDAO.count() == 0) {
             Calendar calendar = Calendar.getInstance();
-            for (int i = 0; i < 20; i++) {
-                calendar.add(Calendar.DAY_OF_YEAR, -i);
+            for (int i = 20; i > 0; i--) {
+                calendar.add(Calendar.DAY_OF_YEAR, -20-i);
                 // Obtén productos aleatorios
                 Producto producto1 = productoDAO.findById((long) (Math.random() * 5 + 1)).orElseThrow();
                 Producto producto2 = productoDAO.findById((long) (Math.random() * 5 + 1)).orElseThrow();
