@@ -11,6 +11,15 @@ public class Producto {
     private String nombre;
     private double precioMayor;
     private double precioMinorista;
+
+    public long getId() {
+        return Id;
+    }
+
+    public void setId(long id) {
+        Id = id;
+    }
+
     @Id
     @SequenceGenerator(
             name="prueba",
