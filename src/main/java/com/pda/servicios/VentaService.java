@@ -5,6 +5,7 @@ import com.pda.Iterador;
 import com.pda.RenglonIterador;
 import com.pda.dao.VentaDAO;
 import com.pda.models.*;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,9 @@ public class VentaService {
 
     // Método para obtener todas las ventas por siaca
     public List<Venta> getAllVentas() {
-        return ventaDAO.findAll();
+        List<Venta> ventas = ventaDAO.findAll();
+        ventas.forEach(venta -> Hibernate.initialize(venta.getRenglones()));
+        return ventas;
     }
     public void cancelVentaById(Long ventaId) {
         ventaDAO.deleteById(ventaId);

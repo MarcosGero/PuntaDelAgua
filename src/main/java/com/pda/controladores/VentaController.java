@@ -3,6 +3,7 @@ package com.pda.controladores;
 import com.pda.models.Producto;
 import com.pda.models.Venta;
 import com.pda.servicios.VentaService;
+import org.hibernate.Hibernate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,10 @@ public class VentaController
     public ResponseEntity<List<Venta>> getVenta()
     {
         List<Venta> ventas = ventaService.getAllVentas();
+        ventas.forEach(venta -> {
+            Hibernate.initialize(venta.getRenglones());
+            venta.getRenglones().forEach(renglon -> Hibernate.initialize(renglon.getProducto()));
+        });
         return ResponseEntity.ok(ventas);
     }
     @DeleteMapping("/{ventaId}")

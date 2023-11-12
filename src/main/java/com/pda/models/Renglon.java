@@ -1,5 +1,7 @@
 package com.pda.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -18,8 +20,9 @@ public class Renglon {
     @JsonProperty
     private long Id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "venta_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "renglones"})
     private Venta venta;
     @ManyToOne(fetch = FetchType.LAZY)
     private Producto producto;
