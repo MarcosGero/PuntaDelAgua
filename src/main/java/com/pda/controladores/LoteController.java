@@ -29,7 +29,15 @@ public class LoteController
     }
 
 
-
+    @PostMapping
+    public ResponseEntity<Lote> createLote(@RequestBody Lote nuevoLote) {
+        try {
+            Lote loteCreado = service.saveLote(nuevoLote);
+            return ResponseEntity.status(HttpStatus.CREATED).body(loteCreado);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
 
     @GetMapping
     public ResponseEntity<List<Lote>> getLote() {
@@ -56,6 +64,7 @@ public class LoteController
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al eliminar el lote.");
         }
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Lote> actualizarCantidadLote(@PathVariable Long id, @RequestBody Lote loteActualizado) {
