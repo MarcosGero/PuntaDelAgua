@@ -31,7 +31,7 @@ public class LoteSeeder implements CommandLineRunner {
                 long maxId=loteDAO.findMaxId();
                 for (long loteNum = maxId; loteNum < maxId + lotesPorProducto; loteNum++) {
                     // Calcula la fecha de vencimiento y cantidad para cada lote
-                    Date fechaVencimiento = dateFormat.parse("2024-" + String.format("%02d", (loteNum + 1)) + "-" + String.format("%02d", (productoId * 2)));
+                    Date fechaVencimiento = dateFormat.parse("2023-" + String.format("%02d", (loteNum + 1)) + "-" + String.format("%02d", (productoId * 2)));
                     int cantidad = (int) (Math.random() * 100 + 50); // Cantidad aleatoria entre 50 y 150
 
                     // Crea y guarda el lote

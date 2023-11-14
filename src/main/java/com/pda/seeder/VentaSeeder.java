@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 @Component
 public class VentaSeeder implements CommandLineRunner {
@@ -23,13 +24,20 @@ public class VentaSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         if (ventaDAO.count() == 0) {
             Calendar calendar = Calendar.getInstance();
+            Random random = new Random();
+
             for (int i = 20; i > 0; i--) {
                 calendar.add(Calendar.DAY_OF_YEAR, -20-i);
-                // Obtén productos aleatorios
+                int horaRandom = 9 + random.nextInt(12);
+                int minutoRandom = random.nextInt(60);
+                calendar.set(Calendar.HOUR_OF_DAY, horaRandom);
+                calendar.set(Calendar.MINUTE, minutoRandom);
+
+
                 Producto producto1 = productoDAO.findById((long) (Math.random() * 5 + 1)).orElseThrow();
                 Producto producto2 = productoDAO.findById((long) (Math.random() * 5 + 1)).orElseThrow();
 
-                // Cantidad y monto aleatorios (o fijos, según lo que necesites)
+
                 int cantidad1 = (int) (Math.random() * 10 + 1);
                 int cantidad2 = (int) (Math.random() * 10 + 1);
                 double monto1 = cantidad1 * producto1.getPrecioMinorista();
@@ -44,7 +52,7 @@ public class VentaSeeder implements CommandLineRunner {
                 // Crea una venta
                 Venta venta = new Venta(calendar.getTime(), totalVenta, Arrays.asList(renglon1, renglon2), TipoFactura.A, TipoVenta.MINORISTA);
 
-                // Establece la venta en cada renglón
+                // Establecee la venta en cada renglón
                 renglon1.setVenta(venta);
                 renglon2.setVenta(venta);
 
