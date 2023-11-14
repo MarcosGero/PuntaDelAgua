@@ -31,10 +31,7 @@ public class VentaController
     public ResponseEntity<List<Venta>> getVenta()
     {
         List<Venta> ventas = ventaService.getAllVentas();
-        ventas.forEach(venta -> {
-            Hibernate.initialize(venta.getRenglones());
-            venta.getRenglones().forEach(renglon -> Hibernate.initialize(renglon.getProducto()));
-        });
+
         return ResponseEntity.ok(ventas);
     }
     @DeleteMapping("/{ventaId}")
@@ -53,6 +50,7 @@ public class VentaController
     }
     @PostMapping
     public ResponseEntity<Venta> addVenta(@RequestBody Venta venta) {
+        System.out.println("La id de la venta es  : " + venta.getId());
         Venta nuevaVenta = ventaService.createVenta(venta);
         return ResponseEntity.ok(nuevaVenta);
     }

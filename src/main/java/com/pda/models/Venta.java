@@ -22,6 +22,11 @@ public class Venta {
     )
     @JsonProperty
     private long Id;
+
+    public long getId() {
+        return Id;
+    }
+
     @Enumerated(EnumType.STRING)
     private TipoFactura tipoFactura;
     @Enumerated(EnumType.STRING)

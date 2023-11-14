@@ -29,20 +29,19 @@ public class VentaService {
     // Método para obtener todas las ventas por siaca
     public List<Venta> getAllVentas() {
         List<Venta> ventas = ventaDAO.findAll();
-        ventas.forEach(venta -> Hibernate.initialize(venta.getRenglones()));
         return ventas;
     }
     public void cancelVentaById(Long ventaId) {
         ventaDAO.deleteById(ventaId);
     }
     public Venta createVenta(Venta venta) {
-        RenglonIterador renglonIterador = new RenglonIterador(venta.getRenglones());
+        RenglonIterador rengIt = new RenglonIterador(venta.getRenglones());
 
 
-        while (renglonIterador.hasNext()) {
-            renglonIterador.next().setVenta(venta);
-        }
-        venta.setMonto(renglonIterador.sumarMontos());//Para encapsulacion aunque haga dos vueltas, se usa el sumarMontos del mismo iterador
+         while (rengIt.hasNext()) {
+             rengIt.next().setVenta(venta);
+         }
+        venta.setMonto(rengIt.sumarMontos());//Para encapsulacion aunque haga dos vueltas, se usa el sumarMontos del mismo iterador
         //Calculo el monto en el back para consistencia de datos. asegurarse de que al guardar los renglones el monto de la venta se corresponda con esos renglones.
         return ventaDAO.save(venta);
     }
