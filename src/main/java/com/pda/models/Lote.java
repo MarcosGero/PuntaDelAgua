@@ -9,6 +9,15 @@ import java.util.Date;
 public class Lote {
 
     @Id
+    @SequenceGenerator(
+            name="lote_generator",
+            sequenceName = "lote_sequence",
+            allocationSize = 50
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "lote_generator"
+    )
     @JsonProperty
     private long Id;
     private long productId;
