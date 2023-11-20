@@ -28,7 +28,7 @@ public class ProductoController
     @GetMapping
     public List<Producto> getProducto()
     {
-         return this.productoService.getProducto();
+        return this.productoService.getProducto();
     }
 
     @GetMapping("/{id}")
